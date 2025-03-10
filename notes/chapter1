@@ -1,0 +1,20 @@
+Source Code => Tokens => AST
+A lexer is reponsible for transforming Source Code into tokens.
+
+Production-ready lexers do attach more information than here in the monkey language in order to give greater resopnses for e.g. error messages.
+
+Tokens are small data structures containing information on the written code.
+
+Within in the monkey language Tokens do have 2 values:
+	1. Type
+	2. Literal
+
+So basically the procedure we go through is looking atmoic at out input, check for each character which Token Type it belongs to and continue according to that.
+For characters like =, (, { and so on, it's indeed quite easy to tokenize them.
+However taking a look at letters, it gets more interesting.
+Here we need to make a difference between identifier/keyword.
+
+Interpreters differ in certain aspects, the important ones mentioned for this chapter are the following:
+	- Whitespaces ignored/important
+	- Accepted letters within identifiers
+
