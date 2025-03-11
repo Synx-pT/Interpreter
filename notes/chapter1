@@ -1,3 +1,4 @@
+1.1-1.3
 Source Code => Tokens => AST
 A lexer is reponsible for transforming Source Code into tokens.
 
@@ -18,3 +19,6 @@ Interpreters differ in certain aspects, the important ones mentioned for this ch
 	- Whitespaces ignored/important
 	- Accepted letters within identifiers
 
+1.4
+What makes parsing difficult is how far one has to look forward/backwards.
+Most lexers also do have a 'peek' function. In our case it's used for 2-character tokens.
