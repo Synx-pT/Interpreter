@@ -1,0 +1,10 @@
+2.1
+A parser takes in input, which can differ e.g. text or tokens, and creates a data structure out of these.
+This is called syntactic analysis, due to the parser also analysing the input, whether it fits the excpected strucutre.
+Characters like Semicolons, newlines, ... are not represented in the Data structure as a token but rather guide the data structres form.
+
+2.2
+Even though parsers generators are vastly superior to writing one yourself, it helps to make your own parser to learn, understand and begin to cherrish generators as you're able to see what the benefits are.
+
+2.3
+There are multiple ways to construct a parsers, this project uses a "Pratt parser".
