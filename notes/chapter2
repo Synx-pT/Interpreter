@@ -8,3 +8,9 @@ Even though parsers generators are vastly superior to writing one yourself, it h
 
 2.3
 There are multiple ways to construct a parsers, this project uses a "Pratt parser".
+
+2.4
+Variable bindings: let x = 5
+This let statement has a indentifier (x) and expression (5)
+Expressions produce values, statements don't. In monkey.
+
