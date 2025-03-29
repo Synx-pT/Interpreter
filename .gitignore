@@ -3,3 +3,4 @@ bookcode/
 # Environment variables
 .envrc
 
+.DS_Store
