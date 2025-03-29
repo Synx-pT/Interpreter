@@ -10,7 +10,7 @@ Within in the monkey language Tokens do have 2 values:
 	1. Type
 	2. Literal
 
-So basically the procedure we go through is looking atmoic at out input, check for each character which Token Type it belongs to and continue according to that.
+So basically the procedure we go through is looking atomic at our input, check for each character which Token Type it belongs to and continue according to that.
 For characters like =, (, { and so on, it's indeed quite easy to tokenize them.
 However taking a look at letters, it gets more interesting.
 Here we need to make a difference between identifier/keyword.
