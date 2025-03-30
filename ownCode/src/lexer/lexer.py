@@ -26,7 +26,29 @@ class Lexer:
 
         match self.ch:
             case '=':
-                tok = Token(token.ASSIGN, '=')
+                if self.peekChar() == '=':
+                    tok = Token(token.EQ, '==')
+                    self.readChar()
+                else:
+                    tok = Token(token.ASSIGN, '=')
+            case '+':
+                tok = Token(token.PLUS, '+')
+            case '-':
+                tok = Token(token.MINUS, '-')
+            case '!':
+                if self.peekChar() == '=':
+                    tok = Token(token.NOT_EQ, '!=')
+                    self.readChar()
+                else:
+                    tok = Token(token.BANG, '!')
+            case '*':
+                tok = Token(token.ASTERISK, '*')
+            case '/':
+                tok = Token(token.SLASH, '/')
+            case '<':
+                tok = Token(token.LT, '<')
+            case '>':
+                tok = Token(token.GT, '>')
             case ';':
                 tok = Token(token.SEMICOLON, ';')
             case '':
@@ -35,4 +57,18 @@ class Lexer:
                 tok = Token(token.ILLEGAL, self.ch)
 
         return tok
+
+    def peekChar(self) -> str:
+        if self.read_position >= len(self.input):
+            return ''
+        else:
+            return self.input[self.read_position]
+
+
+if __name__ == "__main__":
+    lexer = Lexer("==")
+
+    for i in range(len(lexer.input)):
+        lexer.readChar()
+        print(lexer.nextToken())
 
