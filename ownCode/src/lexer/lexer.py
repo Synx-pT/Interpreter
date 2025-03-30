@@ -54,7 +54,12 @@ class Lexer:
             case '':
                 tok = Token(token.EOF, '')
             case _:
-                tok = Token(token.ILLEGAL, self.ch)
+                if self.ch.isdigit():
+                    tok = Token(token.INT, self.readDigit())
+                elif self.ch.isalpha():
+                    tok = Token(token.IDENT, self.readIdentifier())
+                else:
+                    tok = Token(token.ILLEGAL, self.ch)
 
         return tok
 
@@ -64,9 +69,26 @@ class Lexer:
         else:
             return self.input[self.read_position]
 
+    def readDigit(self) -> str:
+        digit: str = self.ch
+        while self.peekChar().isdigit():
+            digit += self.peekChar()
+            self.readChar()
+        return digit
+
+    def readIdentifier(self) -> str:
+        identifier: str = self.ch
+        while self.peekChar().isalpha():
+            identifier += self.peekChar()
+            self.readChar()
+        return identifier
+
+    def newToken(self, token_type: TokenType, literal: str) -> Token:
+        return Token(token_type, literal)
+
 
 if __name__ == "__main__":
-    lexer = Lexer("==")
+    lexer = Lexer("12")
 
     for i in range(len(lexer.input)):
         lexer.readChar()
