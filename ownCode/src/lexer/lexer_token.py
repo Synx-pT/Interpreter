@@ -41,6 +41,16 @@ IF       = "IF"
 ELSE     = "ELSE"
 RETURN   = "RETURN"
 
+keywords: dict[str, TokenType] = {
+    "fn": FUNCTION,
+    "let": LET,
+    "true": TRUE,
+    "false": FALSE,
+    "if": IF,
+    "else": ELSE,
+    "return": RETURN
+}
+
 
 @dataclass
 class Token:
@@ -49,4 +59,11 @@ class Token:
 
     def __repr__(self):
         return f"Token(type={self.type}, literal={self.literal})"
+
+    def lookupIdent(self) -> TokenType:
+        """Check if literal is a keyword"""
+        if self.literal in keywords:
+            return keywords[self.literal]
+        else:
+            return IDENT
 

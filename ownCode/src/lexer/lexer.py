@@ -58,6 +58,8 @@ class Lexer:
                     tok = Token(token.INT, self.readDigit())
                 elif self.ch.isalpha():
                     tok = Token(token.IDENT, self.readIdentifier())
+                    tok.type = tok.lookupIdent()
+                    print(tok.literal)
                 else:
                     tok = Token(token.ILLEGAL, self.ch)
 
@@ -83,12 +85,9 @@ class Lexer:
             self.readChar()
         return identifier
 
-    def newToken(self, token_type: TokenType, literal: str) -> Token:
-        return Token(token_type, literal)
-
 
 if __name__ == "__main__":
-    lexer = Lexer("12")
+    lexer = Lexer("if")
 
     for i in range(len(lexer.input)):
         lexer.readChar()

@@ -65,5 +65,26 @@ def test_literal_and_number():
         tok = lexer.nextToken()
         assert tok == expected_tokens[i], f"Expected {expected_tokens[i]}, but got {tok}"
 
+
+def test_keyword():
+
+    lexer = Lexer("if")
+
+    expected_tokens = [
+        Token(token.IF, "if"),
+        Token(token.EOF, "")
+    ]
+
+    for i in range(len(expected_tokens)):
+        lexer.readChar()
+        tok = lexer.nextToken()
+        assert tok == expected_tokens[i], f"Expected {expected_tokens[i]}, but got {tok}"
+
+
+def test_skip_whitespace
+
+
+def
+
 if __name__ == "__main__":
     ...
