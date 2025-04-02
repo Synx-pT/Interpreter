@@ -24,6 +24,8 @@ class Lexer:
     def nextToken(self) -> Token:
         tok: Token
 
+        self.skipWhitespace()
+
         match self.ch:
             case '=':
                 if self.peekChar() == '=':
@@ -49,8 +51,18 @@ class Lexer:
                 tok = Token(token.LT, '<')
             case '>':
                 tok = Token(token.GT, '>')
+            case ',':
+                tok = Token(token.GT, ',')
             case ';':
                 tok = Token(token.SEMICOLON, ';')
+            case '(':
+                tok = Token(token.LPAREN, '(')
+            case ')':
+                tok = Token(token.RPAREN, ')')
+            case '{':
+                tok = Token(token.LBRACE, '{')
+            case '}':
+                tok = Token(token.RBRACE, '}')
             case '':
                 tok = Token(token.EOF, '')
             case _:
@@ -84,6 +96,10 @@ class Lexer:
             identifier += self.peekChar()
             self.readChar()
         return identifier
+
+    def skipWhitespace(self) -> None:
+        if self.ch == ' ':
+            self.readChar()
 
 
 if __name__ == "__main__":
