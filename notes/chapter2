@@ -13,4 +13,6 @@ There are multiple ways to construct a parsers, this project uses a "Pratt parse
 Variable bindings: let x = 5
 This let statement has a indentifier (x) and expression (5)
 Expressions produce values, statements don't. In monkey.
-
+Identifier struct has a value instace because during the parsing process, they can produce a value if the expression is a valueProducingIdentifier(VPI; such as y = x + 5)
+Parsing logic also contains instaces for the current and next token. Having only one token isnt enough most times.
+E.g. 10; could be with one token the start of a calculation but with another token we know that it's indeed not.
